@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/CommitReveal.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.28;\n\ncontract CommitReveal {\n    constructor() {}\n\n    function commit(bytes memory data) public pure returns (bytes32) {\n        return keccak256(data);\n    }\n\n    function verify(\n        bytes memory data,\n        bytes32 r,\n        bytes32 s,\n        uint8 v\n    ) public view {\n        bytes32 commitHash = commit(data);\n        address signer = ecrecover(commitHash, v, r, s);\n        require(signer == msg.sender);\n    }\n\n\n}\n"
+    }
+  },
+  "settings": {
+    "evmVersion": "paris",
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
