@@ -12,7 +12,7 @@ async function main() {
     const msg = ethers.toUtf8Bytes("My Message");
     const commit = await commitReveal.commit(msg);
 
-    const sign = new ethers.SigningKey(PRIVATE_KEY1).sign(commit);
+    const sign = signer.signingKey.sign(commit);
     const { v, r, s } = ethers.Signature.from(sign);
 
     const result = await commitReveal.verify(msg, v, r, s);
