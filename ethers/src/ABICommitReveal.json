@@ -7,6 +7,17 @@
     {
         "inputs": [
             {
+                "internalType": "bytes",
+                "name": "error",
+                "type": "bytes"
+            }
+        ],
+        "name": "InvalidSign",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "address",
                 "name": "signer",
                 "type": "address"
@@ -28,7 +39,7 @@
                 "type": "bytes"
             }
         ],
-        "name": "commit",
+        "name": "hash",
         "outputs": [
             {
                 "internalType": "bytes32",
